@@ -10,14 +10,19 @@ fi
 
 #configure installation
 cat <<MYSQL_PRESEED | debconf-set-selections
-mysql-server/root_password_again password pass
-mysql-server/root_password password pass
-mysql-server-5.5/postrm_remove_databases boolean false
-mysql-server-5.5/start_on_boot boolean true
+mysql-server mysql-server/root_password_again password pass
+mysql-server mysql-server/root_password password pass
+mysql-server-5.5 mysql-server-5.5/postrm_remove_databases boolean false
+mysql-server-5.5 mysql-server-5.5/start_on_boot boolean true
 MYSQL_PRESEED
 
 #install
 install mysql-common mysql-client-5.5 mysql-server mysql-server-5.5
-
-#disable using
-touch "${0}.done"
+if $? ; then
+    #disable using
+    touch "${0}.done"
+    exit 0
+else
+    echo "Resolve issue and install again!"
+    exit 1
+fi

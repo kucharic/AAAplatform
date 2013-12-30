@@ -6,7 +6,9 @@ install()
 
     if (( $(id -u) == 0 )) ; then
         apt-get update && apt-get install --reinstall -qfy $* 
+        return $?   
     else
         sudo apt-get update && apt-get install --reinstall -qfy $* 
+        return $?
     fi
 }
