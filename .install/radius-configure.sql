@@ -1,4 +1,7 @@
-#read pass ; echo 'DROP DATABASE radius; CREATE DATABASE radius; ALTER DATABASE `radius` COLLATE utf8_bin;' | mysql --password=$pass ; cat /etc/freeradius/sql/mysql/schema.sql | mysql --password=$pass radius ; cat /etc/freeradius/sql/mysql/nas.sql | mysql --password=$pass radius
+GRANT USAGE ON *.* TO 'radius'@'localhost' IDENTIFIED BY PASSWORD '*2551450E5D464579317C5AF0F047F7B765A33754'
+GRANT ALL PRIVILEGES ON `radius`.* TO 'radius'@'localhost'
+GRANT ALL PRIVILEGES ON `radius`.`radpostauth` TO 'radius'@'localhost'
+GRANT ALL PRIVILEGES ON `radius`.`radacct` TO 'radius'@'localhost'
 
 ALTER DATABASE `radius` COLLATE utf8_bin;
 

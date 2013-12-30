@@ -5,8 +5,8 @@ install()
     DEBIAN_FRONTEND=noninteractive
 
     if (( $(id -u) == 0 )) ; then
-        apt-get update && apt-get install --reinstall -qy $* 
+        apt-get update && apt-get install --reinstall -qfy $* 
     else
-        sudo apt-get update && apt-get install --reinstall -qy $* 
+        sudo apt-get update && apt-get install --reinstall -qfy $* 
     fi
 }
