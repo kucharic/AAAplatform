@@ -1,7 +1,7 @@
-GRANT USAGE ON *.* TO 'radius'@'localhost' IDENTIFIED BY PASSWORD '*2551450E5D464579317C5AF0F047F7B765A33754'
-GRANT ALL PRIVILEGES ON `radius`.* TO 'radius'@'localhost'
-GRANT ALL PRIVILEGES ON `radius`.`radpostauth` TO 'radius'@'localhost'
-GRANT ALL PRIVILEGES ON `radius`.`radacct` TO 'radius'@'localhost'
+GRANT USAGE ON *.* TO 'radius'@'localhost' IDENTIFIED BY PASSWORD '*2551450E5D464579317C5AF0F047F7B765A33754';
+GRANT ALL PRIVILEGES ON `radius`.* TO 'radius'@'localhost';
+GRANT ALL PRIVILEGES ON `radius`.`radpostauth` TO 'radius'@'localhost';
+GRANT ALL PRIVILEGES ON `radius`.`radacct` TO 'radius'@'localhost';
 
 ALTER DATABASE `radius` COLLATE utf8_bin;
 
