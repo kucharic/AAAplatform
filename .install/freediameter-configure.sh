@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#test if need to be run
+if [ -f "${0}.done" ] ; then
+    echo "Mysql alreade installed."
+    exit 0
+fi
+
 path=${0%/*}
 . $path/../bin/aaa.lib
 
@@ -12,7 +18,7 @@ if ! $path/psql-configure.sh ; then
 fi
 
 #config files
-mv /etc/freeDiameter /etc/freeDiameter.dpkg
+mv /etc/freeDiameter /etc/freeDiameter.bfaaa
 tar -xzf $path/freediameter-configure/freediameter.tgz -C /etc/
 
 #daemon script
@@ -29,3 +35,5 @@ ccat $path/freediameter-configure.sql | mysql -u root --password=$pass diameap
 
 /etc/init.d/freediameter-daemon stop
 /etc/init.d/freediameter-daemon start
+
+touch "${0}.done"

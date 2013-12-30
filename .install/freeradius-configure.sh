@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#test if need to be run
+if [ -f "${0}.done" ] ; then
+    echo "Mysql alreade installed."
+    exit 0
+fi
+
 path=${0%/*}
 . $path/../bin/aaa.lib
 
@@ -7,7 +13,7 @@ if ! $path/mysql-configure.sh ; then
     exit 1
 fi
 
-mv /etc/freeradius /etc/freeradius.dpkg
+mv /etc/freeradius /etc/freeradius.bfaaa
 tar -xzf $path/freeradius-configure/freeradius.tgz -C /etc/
 
 pass='pass'
@@ -18,3 +24,5 @@ cat $path/freeradius-configure.sql | mysql -u root --password=$pass radius
 
 
 /etc/init.d/freeradius restart
+
+touch "${0}.done"
