@@ -15,10 +15,11 @@ ln -sf /srv/www/aaa/.install/workspace-configure/bash.bashrc /etc/bash.bashrc
 
 #local.rc
 sed -r "/^[[:space:]]*exit 0/q" /etc/rc.local | grep -v '/srv/www/aaa/bin/issue.sh' | head -n-1 > /etc/rc.local.new
-echo '/srv/www/aaa/bin/issue.sh > /etc/issue' >> /etc/rc.local.new
+echo '/srv/www/aaa/bin/issue.sh' >> /etc/rc.local.new
 echo '/srv/www/aaa/bin/network-hosts-generator.sh' >> /etc/rc.local.new
 sed -r "/^[[:space:]]*exit 0/q" /etc/rc.local | tail -n-1 >> /etc/rc.local.new
 mv /etc/rc.local.new /etc/rc.local
+chmod oug+x /etc/rc.local
 
 #hostname
 echo 'aaa' > /etc/hostname
