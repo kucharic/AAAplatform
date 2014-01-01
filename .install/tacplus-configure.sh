@@ -15,6 +15,7 @@ if ! $path/mysql-configure.sh ; then
 fi
 
 #mysql schema
+pass='pass'
 cat $path/tacplus-configure.sql | mysql -u root --password=$pass tacacs
 
 #tacacs configuration
@@ -35,7 +36,7 @@ cp $path/tacplus-configure/libnss-mysql* /etc/
 sed -ri 's/(^[[:space:]]*passwd:.*)/\1 mysql/;s/(^[[:space:]]*group:.*)/\1 mysql/;s/(^[[:space:]]*shadow:.*)/\1 mysql/' /etc/nsswitch.conf
 
 #configure pam
-cat > etc/pam.d/common-account <<PAM_CONF
+cat > /etc/pam.d/common-account <<PAM_CONF
 account     sufficient   pam_unix.so
 account     required     pam_mysql.so config_file=/etc/tacacs+/pam-mysql.conf
 PAM_CONF
