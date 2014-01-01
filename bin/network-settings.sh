@@ -54,7 +54,9 @@ net_reload () {
 
     for i in $interfaces ; do
         /sbin/ifup $i
-    done    
+    done
+
+    /srv/www/aaa/bin/network-hosts-generator.sh   
 }
 
 IP=
