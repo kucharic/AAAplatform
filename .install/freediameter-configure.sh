@@ -34,6 +34,8 @@ pass='pass'
 echo "DROP DATABASE IF EXISTS diameap; CREATE DATABASE diameap; GRANT ALL ON diameap.* TO 'diameter'@'localhost' IDENTIFIED BY 'diameter'" | mysql -u root --password=$pass
 cat $path/freediameter-configure.sql | mysql -u root --password=$pass diameap
 
+insserv freediameter-daemon
+
 /etc/init.d/freediameter-daemon stop
 /etc/init.d/freediameter-daemon start
 
