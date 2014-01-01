@@ -11,4 +11,6 @@ install()
         sudo apt-get update && apt-get install --reinstall -qfy $* 
         return $?
     fi
+
+    export DEBIAN_FRONTEND=''
 }
