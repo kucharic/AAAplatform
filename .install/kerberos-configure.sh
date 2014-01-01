@@ -6,7 +6,8 @@ if [ -f "${0}.done" ] ; then
     exit 0
 fi
 
-. ${0%/*}/../bin/aaa.lib
+path=${0%/*}
+. $path/../bin/aaa.lib
 
 #configure installation
 cat <<KRB_PRESEED | debconf-set-selections
