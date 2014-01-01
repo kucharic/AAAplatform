@@ -1,8 +1,10 @@
-DROP DATABASE tacacs;
+DROP DATABASE IF EXISTS tacacs;
 
 CREATE DATABASE tacacs COLLATE utf8_bin;
 
 GRANT ALL ON `tacacs`.* to 'tacacs'@'localhost' IDENTIFIED BY 'tacpass';
+
+USE tacacs;
 
 CREATE TABLE `tacuser` (
     `username` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL PRIMARY KEY,
