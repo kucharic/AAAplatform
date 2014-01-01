@@ -35,10 +35,10 @@ CREATE TABLE `tacattr` (
 )
 ;
 
-ALTER TABLE `tacgroup` ADD UNIQUE (groupname, attribute);
 ALTER TABLE `tacusergroup` ADD UNIQUE (groupname, username);
 ALTER TABLE `tacusergroup` ADD FOREIGN KEY (`groupname`) REFERENCES `tacgroup` (`groupname`) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE `tacusergroup` ADD FOREIGN KEY (`username`) REFERENCES `tacuser` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `tacauths` ADD UNIQUE (groupname, attribute);
 ALTER TABLE `tacauths` ADD FOREIGN KEY (`groupname`) REFERENCES `tacgroup` (`groupname`) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE `tacauths` ADD FOREIGN KEY (`attribute`) REFERENCES `tacattr` (`attribute`) ON DELETE CASCADE ON UPDATE CASCADE;
 

@@ -55,3 +55,5 @@ cat > /etc/pam.d/common-session <<PAM_CONF
 session    required     pam_mysql.so config_file=/etc/tacacs+/pam-mysql.conf
 PAM_CONF
 sed -ri 's/session[[:space:]]+required[[:space:]]+pam_unix.so/session    sufficient  pam_unix.so/' /etc/pam.d/common-session
+
+touch "${0}.done"
